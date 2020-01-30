@@ -3,7 +3,8 @@ KEYTIMEOUT=1
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export GOPATH=~/Gocode
-PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH/usr/local/opt/python/libexec/bin:$PATH:$GOPATH/bin:/Users/jamm/Library/Python/3.7/bin"
+PATH="/usr/local/opt/python/libexec/bin:/usr/local/sbin:$PATH:$GOPATH/bin:/Users/jamm/Library/Python/3.7/bin"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jamm/.oh-my-zsh"
@@ -124,6 +125,17 @@ alias myip="curl ifconfig.co"
 alias vim="nvim"
 alias gotop="gotop -p"
 
+passgen() { 
+    pwgen -Bs "$1" 1 | pbcopy | pbpaste; echo “Has been copied to clipboard”
+}
+
 prompt_dir() {
   prompt_segment blue black "%$(( $COLUMNS - 61 ))<...<%2~%<<"
 }
+
+function iterm2_print_user_vars() {
+  iterm2_set_user_var kubecontext $(kubectl config current-context)
+}
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+source /Users/jamm/Library/Python/3.7/bin/virtualenvwrapper.sh

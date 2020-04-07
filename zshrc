@@ -5,6 +5,7 @@ KEYTIMEOUT=1
 export GOPATH=~/Gocode
 PATH="/usr/local/opt/python/libexec/bin:/usr/local/sbin:$PATH:$GOPATH/bin:/Users/jamm/Library/Python/3.7/bin"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jamm/.oh-my-zsh"
@@ -124,6 +125,10 @@ alias kns="kubens"
 alias myip="curl ifconfig.co"
 alias vim="nvim"
 alias gotop="gotop -p"
+
+corona() {
+  curl "https://corona-stats.online/${(C)1}"
+}
 
 passgen() { 
     pwgen -Bs "$1" 1 | pbcopy | pbpaste; echo “Has been copied to clipboard”

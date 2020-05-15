@@ -42,6 +42,10 @@ if ! [ -L ~/.tmux.conf ]; then
   log info "Linking tmux config"
   ln -s ${BASEDIR}/tmux.conf ~/.tmux.conf
 fi
+if ! [ -d ~/.tmux/plugins/tpm ]; then
+  log info "Linking tmux config"
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # ZSH
 log info "Configuring zsh"
